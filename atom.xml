@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://janicesg.github.io/"/>
   <updated>2020-05-09T02:27:52.510Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://janicesg.github.io/</id>
   
   <author>
     <name>Janice Zhao</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2020/05/09/hello-world/"/>
-    <id>http://yoursite.com/2020/05/09/hello-world/</id>
+    <link href="https://janicesg.github.io/hello-world/"/>
+    <id>https://janicesg.github.io/hello-world/</id>
     <published>2020-05-09T02:27:52.510Z</published>
     <updated>2020-05-09T02:27:52.510Z</updated>
     
