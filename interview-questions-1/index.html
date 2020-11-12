@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"janicesg.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="IntroductionThis post records my detailed notes when I did my routine review on Java related concepts and questions, hopefully this is helpful to you.  What is your impression of java? Why do we need">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Interview questions">
+<meta property="og:url" content="https://janicesg.github.io/interview-questions-1/index.html">
+<meta property="og:site_name" content="Janice in SG">
+<meta property="og:description" content="IntroductionThis post records my detailed notes when I did my routine review on Java related concepts and questions, hopefully this is helpful to you.  What is your impression of java? Why do we need">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-10T07:03:39.012Z">
+<meta property="article:modified_time" content="2020-11-12T15:17:14.419Z">
+<meta property="article:author" content="Janice Zhao">
+<meta property="article:tag" content="java, interview">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://janicesg.github.io/interview-questions-1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Java Interview questions | Janice in SG</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168725240-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-168725240-1');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?efdb41ef1f0fdb63bfe95a7c76c92cce";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Janice in SG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Janice in SG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">12</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">8</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://janicesg.github.io/interview-questions-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Janice Zhao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Janice in SG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java Interview questions
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-08-10 15:03:39" itemprop="dateCreated datePublished" datetime="2020-08-10T15:03:39+08:00">2020-08-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-11-12 23:17:14" itemprop="dateModified" datetime="2020-11-12T23:17:14+08:00">2020-11-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/coding/" itemprop="url" rel="index"><span itemprop="name">coding</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/interview-questions-1/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="interview-questions-1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>6.8k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>6 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>This post records my detailed notes when I did my routine review on Java related concepts and questions, hopefully this is helpful to you. </p>
+<h3 id="What-is-your-impression-of-java"><a href="#What-is-your-impression-of-java" class="headerlink" title="What is your impression of java?"></a>What is your impression of java?</h3><ol>
+<li>Why do we need java? Java “write once, run anywhere”, GC</li>
+<li>What are the ecosystem of java? big data, app dev, compiler optimization, java optimization</li>
+<li>What are the good things about java?   </li>
+</ol>
+<ul>
+<li>OOP</li>
+<li>Generics</li>
+<li>reflection: 反射就是在运行时才知道要操作的类是什么，并且可以在运行时获取类的完整构造，并调用对应的方法。 (ref: <a href="https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html" target="_blank" rel="noopener">https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html</a>) - security concern, used for frameworks.</li>
+</ul>
+<ol start="4">
+<li>What about jvm: jvm, jit, aot,tools</li>
+</ol>
+<h3 id="What-is-the-difference-between-Error-and-Exception"><a href="#What-is-the-difference-between-Error-and-Exception" class="headerlink" title="What is the difference between Error and Exception?"></a>What is the difference between Error and Exception?</h3><ol>
+<li>Exception and Error both inherits Throwable, which is the basic type of java exception handling.<br>Exception is expected, and it can and should be catched and processed. Error is the unlikely situation in normal execution, most of the errors can cause JVM to fall into an abnormal state. It is hard and not necessary to catch. e.g. OutOfMemoryError.<br>There are unchecked and checked exceptions. Unchecked exceptions happens while executing, like NPE, ArrayIndexOutofBoundsException. checked exceptions have to be wrote explicitly in the code, which compiler will check.</li>
+</ol>
+<ul>
+<li>Errors:LinkageError, NoClassDefFoundError, UnsatisfiedLinkError, ExceptionInitializeError, VirtualMachineError, OutOfMemoryError, StackOverflowError</li>
+<li>Exceptions: IOException, RuntimeException, NPE, ClassNotFoundException</li>
+</ul>
+<ol start="2">
+<li>what is the difference between ClassNotFoundException and NoClassDefFoundError?<br>ClassNotFoundException happens when java using reflection class.forName to do class loading, and a class name is passed as a parameter to this method, then this class will be added to the JVM memory. if it cannot be found in the classpath, then it will throw ClassNotFoundException.<br>NoClassDefFoundError will be thrown when JVM or classloader tries to load a class but cannot find the definition of the class, though it was present when compiling but not when executing. it could be cuased by missing the class while compiling or the jar is damaged.</li>
+<li>4 Principles when handling Exceptions and Errors </li>
+</ol>
+<ul>
+<li>Don’t catch big exceptions, must catch as specific as possible</li>
+<li>Don’t swallow the exception and don’t handle it properly in catch phrase</li>
+<li>Throw early</li>
+<li>catch late: keep the original cause, throw a new exception or the same exception</li>
+</ul>
+<h3 id="What-is-java-class-loader"><a href="#What-is-java-class-loader" class="headerlink" title="What is java class loader?"></a>What is java class loader?</h3><p>(ref: <a href="https://www.cnblogs.com/chanshuyi/p/jvm_serial_07_jvm_class_loader_mechanism.html" target="_blank" rel="noopener">https://www.cnblogs.com/chanshuyi/p/jvm_serial_07_jvm_class_loader_mechanism.html</a>)</p>
+<ol>
+<li>Identify the initial value of class variables: at preparation stage of classloading, JVM will initialize class variables with default values. If the variable is static final, then it will be set as the desired value.</li>
+<li>Entry of initialization: at initialization stage of classloading, JVM will find the main() as the entry point, and initialize the class where main() belongs to. When JVM needs to initialize a class, it will start with class initializer, then instance intializer.</li>
+<li>Class initializer: JVM will collect the class variables, static code in sequence.</li>
+<li>Instance initializer: JVM will collect the instance variables, normal code block, and constructor code in sequence.</li>
+<li>Conditions which trigger initialization:</li>
+</ol>
+<ul>
+<li>when new(), getstatic(),putstatic(),invokeStatic() is called, if the class is not initialized, then trigger the initialization. It will happpen when create a new instance using new(), set or read a static variable, invoke a static method.</li>
+<li>if the parent is not initialized, u need to initialize the parent first</li>
+<li>when the jvm starts, it first initializes the class where the main() exists</li>
+</ul>
+<h3 id="what-is-final-finally-and-finalize"><a href="#what-is-final-finally-and-finalize" class="headerlink" title="what is final, finally, and finalize?"></a>what is final, finally, and finalize?</h3><ol>
+<li>final is an modifier, final variable means the value cannot be modified, final class means it cannot be inherit or implement, final method menas no overriding.</li>
+<li>finally is a clause to force execute, e.g. we can use try-catch-finally or try-finally to close jdbc connection or release the lock.</li>
+<li>finalize is a method of Object, used for garbage collection, not recommend. </li>
+</ol>
+<h3 id="What-happens-from-bytecode-to-machine-code"><a href="#What-happens-from-bytecode-to-machine-code" class="headerlink" title="What happens from bytecode to machine code?"></a>What happens from bytecode to machine code?</h3><ol>
+<li>Java compiler: javac compiles java code to bytecode</li>
+<li>Java Interpreter: translates bytecode to machine code. start up fast but run slow / Just-in-Time Interpreter: runtime compilation (c1 mode and c2 mode), start slow, but run fast afterwords</li>
+<li>Ahead-Of-Time compiler: direct from java code to bytecode, but more errors</li>
+<li>in terms of compile speed:  interpreter &gt; AOT &gt; JIT; compile quality : JIT &gt; AOT &gt; interpreter</li>
+</ol>
+<h3 id="What-is-Garbage-Collection"><a href="#What-is-Garbage-Collection" class="headerlink" title="What is Garbage Collection?"></a>What is Garbage Collection?</h3><ol>
+<li>Mechanism: GC Root Tracing, JVM memory is split into regions: Young(eden,from,to 8:1:1), Old Generation</li>
+<li>Reachability analysis: </li>
+<li>algorithm: Mark Sweep, copying, mark-compact algorithm. </li>
+<li>Garbage Collector:</li>
+</ol>
+<ul>
+<li>Serial Collector: single thread, stop the world.-xx:+UseSerialGC</li>
+<li>Parallel GC: multiple threads, stop the world. </li>
+<li>Concurrent Mark Sweep GC: allocate more CPU to ensure application throughput, multithreading to scan the heap memory to mark instances for eviction and then sweep the marked instances, xx:+UseParNewGC</li>
+<li>G1 GC: it separates the heap memory into regions, and does collection within them in parallel. G1 also does compacts the free heap space on the go just after reclaiming the memory. </li>
+</ul>
+<h3 id="What-is-Strong-Soft-weak-phantom-reachable"><a href="#What-is-Strong-Soft-weak-phantom-reachable" class="headerlink" title="What is Strong , Soft , weak , phantom reachable?"></a>What is Strong , Soft , weak , phantom reachable?</h3><ul>
+<li>Strong: when an object can be reached without any other ref, e.g. new instance.</li>
+<li>Soft: exampt some objects from GC, only when no memory in JVM, it will be GC.</li>
+<li>weakly: when an object can only be reached via weak ref, nearly in finalize</li>
+<li>phantom: reference queue</li>
+</ul>
+<h3 id="What-is-String-StringBuffer-and-StringBuilder"><a href="#What-is-String-StringBuffer-and-StringBuilder" class="headerlink" title="What is String, StringBuffer and StringBuilder?"></a>What is String, StringBuffer and StringBuilder?</h3><ul>
+<li>String is Immutable, finalize, thread-safe, use a pool to reuse the common chars. Try to avoid ‘+’. only String a = “abc” is added to the pool, if String a = new String(“abc”) is not added.</li>
+<li>StringBuffer is thread-safe for modifying string values. it is better to estimate the size of the string when initialize the buffer or builder, otherwise arraycopy is very costly.</li>
+<li>StringBuilder is not thread-safe.</li>
+</ul>
+<h3 id="What-is-AOP"><a href="#What-is-AOP" class="headerlink" title="What is AOP?"></a>What is AOP?</h3><ul>
+<li><a href="https://blog.csdn.net/yanquan345/article/details/19760027" target="_blank" rel="noopener">https://blog.csdn.net/yanquan345/article/details/19760027</a></li>
+</ul>
+<h3 id="What-is-Dynamic-proxy-in-java"><a href="#What-is-Dynamic-proxy-in-java" class="headerlink" title="What is Dynamic proxy in java?"></a>What is Dynamic proxy in java?</h3><ul>
+<li>Proxy: interface, classes which implemented the interface, invocationHandler. </li>
+<li>CGLIB (and javassist) can create a proxy by subclassing</li>
+<li>JDK is to implement interfaces.</li>
+</ul>
+<h3 id="int-VS-Integer"><a href="#int-VS-Integer" class="headerlink" title="int VS Integer?"></a>int VS Integer?</h3><p>始数据类型和 Java 泛型并不能配合使用，也就是Primitive Types 和Generic 不能混用，于 是JAVA就设计了这个auto-boxing/unboxing机制，实际上就是primitive value 与 object之间的隐式转换机制，否则要是没有这个机制，开发者就必须每次手动显示转换，那多麻烦是不是? 但是primitive value 与 object各自有各自的优势，primitive value在内存中存的是值，所以找到primitive value的内存位置，就可以获得值;不像object存的是reference，找到object的 内存位置，还要根据reference找下一个内存空间，要产生更多的IO，所以计算性能比primitive value差，但是object具备generic的能力，更抽象，解决业务问题编程效率高。于是JAVA设计 者的初衷估计是这样的:如果开发者要做计算，就应该使用primitive value如果开发者要处理业务问题，就应该使用object，采用Generic机制;反正JAVA有auto-boxing/unboxing机制， 对开发者来讲也不需要注意什么。然后为了弥补object计算能力的不足，还设计了static valueOf()方法提供缓存机制，算是一个弥补</p>
+<h3 id="ArrayList-VS-Vector-VS-LinkedList"><a href="#ArrayList-VS-Vector-VS-LinkedList" class="headerlink" title="ArrayList VS Vector VS LinkedList?"></a>ArrayList VS Vector VS LinkedList?</h3><ol>
+<li>ArrayList and Vector are achieved by array, LinkedList via doubly linked list</li>
+<li>if exceeds capacity, arrayLIst will do arrayCopy, and increase 50%, but vector will increase to 2 times.</li>
+<li>thread-safe: vector</li>
+<li>arraylist read fast, delete and add slow. but linkedlist read slow</li>
+</ol>
+<h3 id="B-tree-in-MySQL"><a href="#B-tree-in-MySQL" class="headerlink" title="B+ tree in MySQL"></a>B+ tree in MySQL</h3><ul>
+<li>page, index, </li>
+<li>primary key index 主键索引(聚簇索引)： sorted by primary key index, 数据即索引，</li>
+<li>联合索引： 好几个column联合起来，成立一个key。 no records in the leaf nodes. - secondary index</li>
+</ul>
+<h3 id="Random-stuff-here"><a href="#Random-stuff-here" class="headerlink" title="Random stuff here"></a>Random stuff here</h3><p>application.yml - change the default configurations</p>
+<ul>
+<li>web.xml :<br>ContextLoadListener - 监听servlet容器的启动，销毁，ioc 的初始化，完成依赖注入<br>dispatcherServlet: 前端控制器，接收tomcat解析的http报文，匹配controller 处理业务<br>tomcat 7 ： 内嵌版本的tomcat.jar, 解决java的跨平台, 不同系统的tomcat server</li>
+</ul>
+<ol start="0">
+<li>read application.yml, tomcat config(auto config by spring boot).  </li>
+<li>initialize the IOC</li>
+<li>start tomcat</li>
+<li>initialize: DispatcherServlet, put into the ioc container, and load to the tomcat context. </li>
+</ol>
+<ul>
+<li>applicationContext.xml: @Configuration + @Bean +  scanto replace the <Bean></Bean>  , scan exclude controller</li>
+<li>springmvc.xml（only  need controller ， only  scan controller）: 视图解析器，json转换 bean 配置 @Configuration + @Bean，but it must implement an interface. </li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>Welcome to my other publishing channels</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java-interview/" rel="tag"># java, interview</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/algorithm-theory/" rel="prev" title="Algorithm Practice Notes">
+      <i class="fa fa-chevron-left"></i> Algorithm Practice Notes
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-your-impression-of-java"><span class="nav-number">2.</span> <span class="nav-text">What is your impression of java?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-the-difference-between-Error-and-Exception"><span class="nav-number">3.</span> <span class="nav-text">What is the difference between Error and Exception?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-java-class-loader"><span class="nav-number">4.</span> <span class="nav-text">What is java class loader?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#what-is-final-finally-and-finalize"><span class="nav-number">5.</span> <span class="nav-text">what is final, finally, and finalize?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-happens-from-bytecode-to-machine-code"><span class="nav-number">6.</span> <span class="nav-text">What happens from bytecode to machine code?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Garbage-Collection"><span class="nav-number">7.</span> <span class="nav-text">What is Garbage Collection?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Strong-Soft-weak-phantom-reachable"><span class="nav-number">8.</span> <span class="nav-text">What is Strong , Soft , weak , phantom reachable?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-String-StringBuffer-and-StringBuilder"><span class="nav-number">9.</span> <span class="nav-text">What is String, StringBuffer and StringBuilder?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-AOP"><span class="nav-number">10.</span> <span class="nav-text">What is AOP?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Dynamic-proxy-in-java"><span class="nav-number">11.</span> <span class="nav-text">What is Dynamic proxy in java?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#int-VS-Integer"><span class="nav-number">12.</span> <span class="nav-text">int VS Integer?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-VS-Vector-VS-LinkedList"><span class="nav-number">13.</span> <span class="nav-text">ArrayList VS Vector VS LinkedList?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-tree-in-MySQL"><span class="nav-number">14.</span> <span class="nav-text">B+ tree in MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-stuff-here"><span class="nav-number">15.</span> <span class="nav-text">Random stuff here</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Janice Zhao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/janicesg" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;janicesg" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:janicezhao2013@gmail.com" title="E-Mail → mailto:janicezhao2013@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/janiceinsg" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;janiceinsg" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Janice Zhao</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">Symbols count total: </span>
+    <span title="Symbols count total">26k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    <span title="Reading time total">24 mins.</span>
+</div>
+
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_uv">
+  | Guests <span id="busuanzi_value_site_uv"></span>
+</span>
+<span id="busuanzi_container_site_pv">| Total <span id="busuanzi_value_site_pv"></span> Views</span>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://janice-sg.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://janicesg.github.io/interview-questions-1/";
+    this.page.identifier = "interview-questions-1/";
+    this.page.title = "Java Interview questions";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://janice-sg.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
